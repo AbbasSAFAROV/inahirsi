@@ -1,0 +1,78 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Jadusona - eCommerce Baby shop Bootstrap4 Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/favicon.ico">
+    
+    <!-- CSS
+	============================================ -->
+   
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+    
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="/static/assets/css/icon-font.min.css">
+    
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/static/assets/css/plugins.css">
+    
+    <!-- Helper CSS -->
+    <link rel="stylesheet" href="/static/assets/css/helper.css">
+    
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+    
+    <!-- Modernizer JS -->
+    <script src="/static/assets/js/vendor/modernizr-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+<div class="main-wrapper">
+    {% include "includes/navbar.html" %}
+    
+    <div class = "container">
+        <!-- {% if messages %}
+            {% for message in messages %}
+                <div 
+                    {% if message.tags %}
+                        class="alert alert-{{ message.tags }}"
+                    {% endif %}>{{ message }}
+                </div>
+            {% endfor %}
+        {% endif %} -->
+    {% block body %}
+        
+    {% endblock body %}
+    </div>
+
+
+    {% include "includes/footer.html" %}
+    {% include "includes/copyright.html" %}
+</div>
+
+<!-- JS
+============================================ -->
+
+<!-- jQuery JS -->
+<script src="/static/assets/js/vendor/jquery-3.4.1.min.js"></script>
+<!-- Popper JS -->
+<script src="/static/assets/js/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="/static/assets/js/bootstrap.min.js"></script>
+<!-- Plugins JS -->
+<script src="/static/assets/js/plugins.js"></script>
+<!-- Ajax Mail -->
+<script src="/static/assets/js/ajax-mail.js"></script>
+<!-- Main JS -->
+<script src="/static/assets/js/main.js"></script>
+
+</body>
+
+</html>

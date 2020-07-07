@@ -1,0 +1,154 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container">
+    
+<div class="container">
+    <a href="/addBanner"  class="btn btn-primary">Add Banner</a>
+    <a href="/AddCourseBranch"  class="btn btn-primary">Add Course Branch</a>
+    <!-- <button type="button" class="btn btn-secondary">Secondary</button>
+    <button type="button" class="btn btn-secondary">Secondary</button> -->
+</div>
+
+{% if cour %}
+<h1>Başvurular</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">e-Mail</th>
+            <th scope="col">Taken Course</th>
+            <th scope="col">Created Date</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for item in cour %}
+        <tr>
+            <th scope="row">{{item.id}}</th>
+            <th scope="col">{{item.name}}</th>
+            <th scope="col">{{item.phone_number}}</th>
+            <th scope="col">{{item.mail}}</th>
+            <th scope="col">{{item.taken_course}}</th>
+            <th scope="col">{{item.applicant_date}}</th>
+            <th scope="col">{{item.status}}</th>
+            <th scope="col">
+                {% if item.status == 'waiting' %}
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="/AcceptApplicant/{{item.id}}" class="btn btn-success" role="button" aria-pressed="true">Accept</a>
+                    <a href="/deleteApplicant/{{item.id}}" class="btn btn-warning" role="button" aria-pressed="true">Declined</a>
+                </div>
+                {% else %}
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="/RemoveFromCourse/{{item.id}}" class="btn btn-success btn-sm" role="button" aria-pressed="true">Remove From Course</a>
+                </div>
+                {% endif %}
+            </th>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+<div class="alert alert-danger" style="margin-top:20px;">Henüz Başvuru bulunmuyor</div>
+{% endif %}
+
+
+
+{% if course %}
+<h1>Courses</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Course Branch</th>
+            <th scope="col">Course Place</th>
+            <th scope="col">Starting Date</th>
+            <th scope="col">Due Date</th>
+            <th scope="col">Price</th>
+            <th scope="col">Max Apply</th>
+            
+            <th scope="col">Status</th>
+            <th scope="col"></th>
+            <th scope="col">Remove</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for item in course %}
+        <tr>
+            <th scope="row">{{item.id}}</th>
+            <th scope="col">{{item.course_name}}</th>
+            <th scope="col">{{item.course_branch}}</th>
+            <th scope="col">{{item.course_place}}</th>
+            <th scope="col">{{item.starting_date}}</th>
+            <th scope="col">{{item.due_date}}</th>
+            <th scope="col">{{item.price}}</th>
+            <th scope="col">{{item.max_apply}}</th>
+            <th scope="col">{{item.status}}</th>
+
+            <th scope="col">
+                {% if item.status == 'passive' %}
+                <a href="/ActivateCourse/{{item.id}}" class="btn btn-success" role="button" aria-pressed="true">Activate</a>
+                {% else %}
+                <a href="/PassiveCourse/{{item.id}}" class="btn btn-success" role="button" aria-pressed="true">Inactivation</a>
+                {% endif %}
+            </th>
+            <th scope="col">
+                <a href="/deleteCourse/{{item.id}}" class="btn btn-danger" role="button" aria-pressed="true">Remove</a>
+            </th>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+<div class="alert alert-danger">Henüz Makaleniz Bulunmuyor</div>
+{% endif %}
+
+    
+{% if branch %}
+<h1>Course Branches</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+
+            <th scope="col">Add Course</th>
+            <th scope="col">Remove</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for item in branch %}
+        <tr>
+            <th scope="row">{{item.id}}</th>
+            <th scope="col">{{item.branch_name}}</th>
+
+            <th scope="col">
+                <a href="/addCourse/{{item.id}}" class="btn btn-primary"> Add Course</a>
+            </th>
+            <th scope="col">
+                <a href="/deleteCourseBranch/{{item.id}}" class="btn btn-danger" role="button" aria-pressed="true">Remove</a>
+            </th>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+<div class="alert alert-danger">Henüz Makaleniz Bulunmuyor</div>
+{% endif %}
+
+</div>
+
+{% endblock body %}

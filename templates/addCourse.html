@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container" >
+    {% if branch1 %}
+    <form method="post">
+      {% csrf_token %} 
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Course Name</label>
+          <input name="course_name" class="form-control" placeholder="Course Name">
+          
+        </div>
+        <!-- <div class="form-group">
+            <label for="exampleInputEmail1">Course Branch</label>
+            <input type="email" name="course_branch" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Course Branch">
+            <small id="emailHelp" class="form-text text-muted"></small>
+        </div> -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">Course Place</label>
+            <input name="course_place" class="form-control" placeholder="Course Place">
+            
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Course Price</label>
+            <input name="price" class="form-control" placeholder="Course Price">
+            
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Course max_apply</label>
+            <input name="max_apply" class="form-control" placeholder="Enter email">
+            
+        </div>
+
+        <!-- <div class="form-group">
+            <label for="exampleFormControlSelect1">Course Branch</label>
+
+            <select class="form-control" id="exampleFormControlSelect1",name="branch_name">
+              {% for item in course_branch %}
+              <option value="{{item.id}}" data-value="{{item.branch_name}}">{{item.branch_name}}</option>
+              {% endfor %}
+              
+
+            </select>
+        </div> -->
+
+        <input class="form-control" type="text" name="cours_name" placeholder="{{branch1.branch_name}}" readonly>
+        <!-- <div class="form-group">
+            <label for="exampleFormControlSelect1">Course Status</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>
+                Active
+              </option>
+              <option>
+                Passive
+              </option>
+              
+            </select>
+        </div> -->
+
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Example file input</label>
+            <input type="file" class="form-control-file" name="image">
+          </div>
+
+        <!-- <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div> -->
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      
+{% else %}
+<div class="alert alert-warning" role="alert">
+Henüz bir ürün eklenmemiştir! Bilineze
+</div>
+{% endif %}
+
+
+</div>
+
+{% endblock body %}
